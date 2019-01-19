@@ -1,0 +1,11 @@
+#!/bin/bash
+
+result=$(lsblk -l | grep part | grep "^sda" -v | grep "/run/media" -v | dmenu -p 'Select volume to mount' -l 5 | cut -c 1-4)
+
+if test -z "$result" 
+then
+    	echo "empty"
+else
+	udisksctl mount -b /dev/$result && notify-send "Drive mounted"
+fi
+

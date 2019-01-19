@@ -1,0 +1,11 @@
+#!/bin/bash
+
+result=$(lsblk -l | grep part | grep "/run/media" | dmenu -p 'Select volume to unmount' -l 5 | cut -c 1-4)
+
+if test -z "$result" 
+then
+    	echo "empty"
+else
+	udisksctl unmount -b /dev/$result &&  notify-send "Drive Unmounted"
+fi
+

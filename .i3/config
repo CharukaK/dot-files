@@ -32,6 +32,10 @@ bindsym $mod+Return exec terminal
 # Switch between open windows
 bindsym Mod1+Tab exec rofi -show window
 
+# Mounting/Unmounting USB drives
+bindsym $mod+Shift+m exec ~/custom_scripts/mount_media
+bindsym $mod+Shift+u exec ~/custom_scripts/unmount_media
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
