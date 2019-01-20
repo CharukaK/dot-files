@@ -1,0 +1,4 @@
+#!/bin/bash
+# This script will find any file in the directory then open it with rifle
+result=$(fzf --reverse -e)
+[ ! -z "$result" ] && rifle $result
