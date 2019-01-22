@@ -70,7 +70,7 @@ URxvt.font:                       xft:MesloLGS\ Nerd\ Font\ Mono:size=9
 
 URxvt.depth:                      32
 URxvt.background:                 [100]#1D2021
-URxvt.foreground:		  [100]#A89984
+URxvt.foreground:		  [100]#FBF1C7
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
