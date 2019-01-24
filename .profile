@@ -15,3 +15,5 @@ export PATH=~/Dev/apache-maven-3.5.4/bin:~/Dev/apache-jena-3.10.0/bin:$PATH
 # export JENA_HOME=/home/charuka/Dev/apache-jena-3.10.0
 # export PATH=~/Dev/apache-jena-3.10.0/bin:$PATH
 
+
+export PATH="$HOME/.cargo/bin:$PATH"
