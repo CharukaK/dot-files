@@ -5,7 +5,9 @@
 	set number relativenumber
 	set ignorecase
 	colorscheme default
-	set guifont=MesloLGS\ Nerd\ Font\ Mono\ 9	
+	set guifont=MesloLGS\ Nerd\ Font\ Mono\ 9
+	set mouse=a
+	set incsearch
 " keyboard mappings
 	map <C-S-c> "+y
 
@@ -34,8 +36,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
