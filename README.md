@@ -9,6 +9,9 @@
  - playerctl
  - fzf
 
+### dependencies for vim
+ - vundle
+
 ```Note:``` Screen layout files should go to `~/.screenlayout` folder or change the location of the screenlayout folder in .i3/config
 
 Check this [article](https://link.medium.com/SYUhLSVbKT) on how to setup the local folder
