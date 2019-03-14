@@ -49,11 +49,11 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+#exec --no-startup-id volumeicon
+#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
+exec --no-startup-id pa-applet
+bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
@@ -69,7 +69,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec firefox
+bindsym $mod+F2 exec chromium
 bindsym $mod+F3 exec terminal -e 'ranger'
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
@@ -164,6 +164,7 @@ set $ws7 7
 set $ws8 8
 set $ws9 9
 
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -242,7 +243,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Configure screen layout
-bindsym $mod+F8 exec sh .screenlayout/$(ls .screenlayout | dmenu -p 'Select Configuration')
+bindsym $mod+F8 exec sh .screenlayout/$(ls .screenlayout | dmenu -p 'Select Configuration') && feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
 # Move workspace between displays
 bindsym $mod+F9 exec  i3-msg move workspace to $(cat ~/displayList | dmenu -p 'Select Display')
@@ -364,13 +365,13 @@ bar {
 
 #                      border  backgr. text
         focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
+        active_workspace   #595B5B #f40000 #FDF6E3
         inactive_workspace #595B5B #222D31 #EEE8D5
         binding_mode       #16a085 #2C2C2C #F9FAF9
         urgent_workspace   #16a085 #FDF6E3 #E5201D
     }
 }
-
+#353836
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
