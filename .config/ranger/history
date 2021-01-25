@@ -1,0 +1,16 @@
+q!!
+open_with xarchiver
+rename vegahunters2_4_by_balsamique_ddab1qb(1).swf
+wq!
+default_linemode none
+shell h
+tag_remove 
+shell unzip scripts.zip
+open_with 
+open_with vlc
+shell pinta %s
+shell touch test
+shell touch yo
+
+shell mpv The.Office.S04E15.Night.Out.WEB-DL.x264-\[MULVAcoded\].mkv
+delete

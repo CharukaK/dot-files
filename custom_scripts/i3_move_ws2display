@@ -1,0 +1,10 @@
+#!/bin/bash
+
+result=$(xrandr | grep -w connected | sed 's/|/ /' | awk '{print $1}' | dmenu -p 'Move workspace to display : ')
+
+if test -z "$result"
+then
+	echo "nothing selected"
+else
+	i3-msg move workspace to $result
+fi

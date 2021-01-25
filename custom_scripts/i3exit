@@ -1,0 +1,29 @@
+#!/bin/sh
+
+case "$1" in
+	lock)
+		i3lock-fancy
+		;;
+	logout)
+		i3-msg exit
+		;;
+	suspend)
+		# for debian based
+		# sudo pm-suspend | i3lock-fancy
+		i3lock-fancy; systemctl suspend
+		;;
+	hibernate)
+		sudo pm-hibernate
+		;;
+	reboot)
+		reboot
+		;;
+	shutdown)
+		poweroff
+		;;
+	*)
+		echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
+        	exit 2
+esac
+
+exit 0
