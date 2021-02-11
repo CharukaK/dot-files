@@ -85,7 +85,7 @@ URxvt*foreground:                 grey
 URxvt*saveLines:                  5000
 
 URxvt.perl-ext-common: default,matcher,new-window
-URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.url-launcher: /usr/bin/chromium
 URxvt.matcher.button: 1
 
 ! for 'fake' transparency (without Compton) uncomment the following three lines
