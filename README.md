@@ -9,3 +9,4 @@
  - i3lock
  - fzf
  - playerctl
+ - picom
