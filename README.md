@@ -10,3 +10,5 @@
  - fzf
  - playerctl
  - picom
+ - xautolock
+

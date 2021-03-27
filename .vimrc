@@ -10,3 +10,4 @@
 
 " Keymaps
 	vmap <C-c> "+y
+

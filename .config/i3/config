@@ -42,7 +42,7 @@ bindsym $mod+Print --release exec --no-startup-id ~/custom_scripts/i3scrot -u
 bindsym $mod+Shift+Print --release exec --no-startup-id ~/custom_scripts/i3scrot -s
 
 bindsym $mod+F2 exec chromium
-bindsym $mod+F3 exec urxvt -e 'ranger'
+bindsym $mod+F3 exec i3-sensible-terminal -e 'ranger'
 
 
 # kill focused window
@@ -100,6 +100,9 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
+# switch to urgent window
+bindsym $mod+x [urgent=latest] focus
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -113,7 +116,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Startup applications
-exec --no-startup-id picom -b
+# exec --no-startup-id picom -b
+# exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id redshift-gtk
@@ -123,7 +127,7 @@ exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 exec --no-startup-id /usr/bin/blueman-applet # Bluetooth tray icon
 exec --no-startup-id xautolock -time 10 -locker i3lock-fancy
 # exec --no-startup-id ~/Dev/Telegram/Telegram -startintray
-exec --no-startup-id /home/charukak/Dev/jetbrains-toolbox-1.18.7609/jetbrains-toolbox --minimize
+exec --no-startup-id /home/charukak/devTools/jetbrains-toolbox-1.20.7940/jetbrains-toolbox --minimize
 exec --no-startup-id xfce4-power-manager
 
 # Multimedia keys enabled using playerctl
