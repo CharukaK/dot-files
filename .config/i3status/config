@@ -41,7 +41,7 @@ disk "/" {
 
 wireless _first_ {
 # if you use %speed, i3status requires root privileges
-        format_up = "  : %ip str: %quality "
+        format_up = " WiFi : (%quality at %essid) %ip "
         format_down = " wifi: down "
 }
 
