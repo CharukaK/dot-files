@@ -121,8 +121,8 @@ bindsym $mod+a focus parent
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id /home/charukak/custom_scripts/setup-nvidia.sh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id xfce4-clipman
-exec --no-startup-id redshift-gtk -l 7.8731:80.7718 -t 4500:4700 -m randr
+exec --no-startup-id diodon
+exec --no-startup-id redshift -l 7.8731:80.7718 -t 4500:4700 -m randr
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
