@@ -1,6 +1,6 @@
 #!/bin/bash
 
-result=$(lsblk -l | grep part | grep "^nvme0n1p" -v | grep "/run/media" -v | dmenu -p 'Select volume to mount' -l 5 | cut -c 1-4)
+result=$(lsblk -l | grep disk | grep "^nvme0n1" -v | grep "/run/media" -v | dmenu -p 'Select volume to mount' -l 5 | cut -c 1-4)
 
 if test -z "$result" 
 then

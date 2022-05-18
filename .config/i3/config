@@ -116,21 +116,21 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Startup applications
-# exec --no-startup-id picom -b
+exec --no-startup-id picom -b
 # exec --no-startup-id /usr/bin/dunst
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id /home/charukak/custom_scripts/setup-nvidia.sh
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id /home/charukak/custom_scripts/setup-nvidia.sh
+exec --no-startup-id volumeicon
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xfce4-clipman
-exec --no-startup-id redshift-gtk -l 7.8731:80.7718 -t 4500:4700 -m randr
+exec --no-startup-id redshift-gtk -l 7.8731:80.7718 -t 4500:3500 -m randr
 exec --no-startup-id nm-applet
-exec --no-startup-id volumeicon
 exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 exec --no-startup-id /usr/bin/blueman-applet # Bluetooth tray icon
 # exec --no-startup-id xautolock -time 10 -locker i3lock-fancy
 # exec --no-startup-id ~/Dev/Telegram/Telegram -startintray
-exec --no-startup-id /home/charukak/devTools/jetbrains-toolbox-1.20.7940/jetbrains-toolbox --minimize
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id /home/charukak/devTools/jetbrains-toolbox-1.20.7940/jetbrains-toolbox --minimize
+# exec --no-startup-id xfce4-power-manager
 
 # Multimedia keys enabled using playerctl
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -198,6 +198,11 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym Control+Shift+period exec dunstctl context
+bindsym Control+grave exec dunstctl history-pop
+bindsym Control+space exec dunstctl close
+bindsym Control+Shift+space exec dunstctl close-all
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
