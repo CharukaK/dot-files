@@ -8,3 +8,4 @@ then
 else
 	i3-msg move workspace to $result
 fi
+

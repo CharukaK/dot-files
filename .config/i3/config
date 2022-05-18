@@ -116,21 +116,24 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Startup applications
-# exec --no-startup-id picom -b
+exec --no-startup-id picom -CGb
 # exec --no-startup-id /usr/bin/dunst
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id /home/charukak/custom_scripts/setup-nvidia.sh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id diodon
+exec --no-startup-id xfce4-clipman
 exec --no-startup-id redshift -l 7.8731:80.7718 -t 4500:4700 -m randr
 exec --no-startup-id nm-applet
-exec --no-startup-id volumeicon
+# exec --no-startup-id volumeicon
+exec --no-startup-id pasystray
+
 exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 exec --no-startup-id /usr/bin/blueman-applet # Bluetooth tray icon
 # exec --no-startup-id xautolock -time 10 -locker i3lock-fancy
 # exec --no-startup-id ~/Dev/Telegram/Telegram -startintray
 exec --no-startup-id /home/charukak/devTools/jetbrains-toolbox-1.20.7940/jetbrains-toolbox --minimize
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 
 # Multimedia keys enabled using playerctl
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -223,10 +226,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -238,6 +241,9 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# make some windows foating by default
+for_window [title="^zoom$"] floating enable
 
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #FFFFFF   #6272A4
