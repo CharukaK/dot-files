@@ -43,13 +43,13 @@ bindsym $mod+Shift+Print --release exec --no-startup-id ~/custom_scripts/i3scrot
 
 bindsym $mod+F2 exec google-chrome-stable
 bindsym $mod+F3 exec i3-sensible-terminal -e 'ranger'
-
+bindsym $mod+F4 exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -i
 
 # switch between open windows
 bindsym Mod1+Tab exec rofi -show window
@@ -120,9 +120,10 @@ exec --no-startup-id picom -CGb
 # exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id /home/charukak/custom_scripts/setup-nvidia.sh
+# exec --no-startup-id /home/charukak/custom_scripts/setup-nvidia.sh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id xfce4-clipman
+# exec --no-startup-id xfce4-clipman
+ exec --no-startup-id greenclip daemon
 exec --no-startup-id redshift -l 7.8731:80.7718 -t 4500:4700 -m randr
 exec --no-startup-id nm-applet
 # exec --no-startup-id volumeicon
@@ -243,7 +244,7 @@ mode "resize" {
 }
 
 # make some windows foating by default
-for_window [title="^zoom$"] floating enable
+for_window [title="^zoom$" class="[zoom]*"] floating enable
 
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #FFFFFF   #6272A4

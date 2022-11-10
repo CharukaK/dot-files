@@ -10,7 +10,7 @@ case "$1" in
 	suspend)
 		# for debian based
 		# sudo pm-suspend | i3lock-fancy
-		i3lock-fancy; systemctl suspend
+		systemctl suspend; i3lock-fancy 
 		;;
 	hibernate)
 		sudo pm-hibernate

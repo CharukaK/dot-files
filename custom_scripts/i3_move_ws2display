@@ -6,6 +6,6 @@ if test -z "$result"
 then
 	echo "nothing selected"
 else
-	i3-msg move workspace to $result
+	i3-msg move workspace to output $result
 fi
 
