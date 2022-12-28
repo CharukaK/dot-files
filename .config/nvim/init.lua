@@ -241,6 +241,23 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+-- set switch back to file directory
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- set halfpage scroll but everytime cursor is in middle
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- when in visual mode use this to move code highlighted code blocks
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- cursor will stay the same position when using J to remove the end line
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- delete without saving to buffer clipboard
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
