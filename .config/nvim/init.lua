@@ -1,3 +1,7 @@
+-- Disable netrw for nvimtree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -10,6 +14,13 @@ end
 require('packer').startup(function(use)
     -- Package manager
   use 'wbthomason/packer.nvim'
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+  }
 
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -25,7 +36,6 @@ require('packer').startup(function(use)
       'folke/neodev.nvim',
     },
   }
-
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
@@ -159,6 +169,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -169,6 +180,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+require('nvim-tree').setup()
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
@@ -240,6 +253,9 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- set yanking configuration (copy/paste)
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+-- Remap keys for nvimtree
+vim.keymap.set({ 'n', 'v' }, '<leader>pe', ":NvimTreeFindFile<return>")
 
 -- set switch back to file directory
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
