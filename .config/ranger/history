@@ -16,5 +16,8 @@ shell unzip postgresql-20210222T174841Z-001.zip
 search .mine
 wq!
 shell mkdir print
-delete
 rename Steam Halloween Scream Fest background [2560x1440] - pieced together from the site.png
+delete
+search servi
+search ser
+q
