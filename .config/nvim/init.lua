@@ -14,7 +14,6 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
-
   -- file browser
   use {
     'nvim-tree/nvim-tree.lua',
@@ -22,6 +21,8 @@ require('packer').startup(function(use)
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
   }
+
+  use "github/copilot.vim"
 
   use { -- autoclose brackets, qoutes etc
     "windwp/nvim-autopairs",
@@ -55,7 +56,7 @@ require('packer').startup(function(use)
   -- }
 
   use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
-
+  -- use 'nvim-treesitter/nvim-treesitter-context'
   use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
@@ -66,8 +67,12 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  -- theme
+  -- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   -- use { "ellisonleao/gruvbox.nvim" }
+  use 'folke/tokyonight.nvim'
+  -- use 'Mofiqul/vscode.nvim'
+
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -82,6 +87,33 @@ require('packer').startup(function(use)
   -- debug adapter protocol
   use 'mfussenegger/nvim-dap'
 
+  -- undo tree
+  use 'mbbill/undotree'
+
+  -- use {
+  --   "mfussenegger/nvim-dap",
+  --   opt = true,
+  --   module = { "dap" },
+  --   requires = {
+  --     "theHamsta/nvim-dap-virtual-text",
+  --     "rcarriga/nvim-dap-ui",
+  --     "mfussenegger/nvim-dap-python",
+  --     "nvim-telescope/telescope-dap.nvim",
+  --     { "leoluz/nvim-dap-go",                module = "dap-go" },
+  --     { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+  --     { "mxsdev/nvim-dap-vscode-js" },
+  --     {
+  --       "microsoft/vscode-js-debug",
+  --       opt = true,
+  --       run = "npm install --legacy-peer-deps && npm run compile",
+  --     },
+  --   },
+  --   config = function()
+  --     require("config.dap").setup()
+  --   end,
+  --   disable = false,
+  -- }
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -91,8 +123,6 @@ require('packer').startup(function(use)
   if is_bootstrap then
     require('packer').sync()
   end
-
-  
 end)
 
 -- When we are bootstrapping a configuration, it doesn't
@@ -145,8 +175,10 @@ vim.wo.signcolumn = 'yes'
 -- Set colorscheme
 vim.o.termguicolors = true
 
-vim.cmd.colorscheme('onedark')
 -- vim.cmd.colorscheme('gruvbox')
+vim.cmd[[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme onedark]]
+
 
 -- Set colorscheme
 vim.o.tabstop = 4
@@ -180,7 +212,9 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-
+-- copilot settings
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -192,6 +226,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+
+-- file explorer setup
 require('nvim-tree').setup()
 
 -- Set lualine as statusline
@@ -199,7 +235,9 @@ require('nvim-tree').setup()
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'onedark',
+    -- theme = 'vscode',
+    -- theme = 'onedark',
+    theme = 'tokyonight',
     -- theme = 'gruvbox',
     component_separators = '|',
     section_separators = '',
@@ -244,6 +282,9 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
+-- undotree toggle
+vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
+
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -262,6 +303,12 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
+-- -- split navigation
+-- vim.keymap.set("n", "<C-h>", "<C-w>h");
+-- vim.keymap.set("n", "<C-j>", "<C-w>j");
+-- vim.keymap.set("n", "<C-k>", "<C-w>k");
+-- vim.keymap.set("n", "<C-l>", "<C-w>l");
+
 -- set yanking configuration (copy/paste)
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -272,6 +319,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>pe', vim.cmd.NvimTreeFindFile)
 
 -- Remap keys for tpope git
 vim.keymap.set({ 'n', 'v' }, '<leader>gs', vim.cmd.Git)
+
+-- Remap keys to view Git history for the current file
+vim.keymap.set({ 'n', 'v' }, '<leader>gh', ":0Gllog")
 
 -- set switch back to file directory
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -294,7 +344,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'javascript', 'help' },
+  ensure_installed = { 'c', 'cpp', 'go', 'python', 'rust', 'typescript', 'javascript', 'help' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -389,6 +439,8 @@ local on_attach = function(_, bufnr)
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' });
+  -- vim.keymap.set('n', '<C-K>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' });
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -416,12 +468,12 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
+  -- sumneko_lua = {
+  --   Lua = {
+  --     workspace = { checkThirdParty = false },
+  --     telemetry = { enable = false },
+  --   },
+  -- },
 }
 
 -- Setup neovim lua configuration
@@ -456,7 +508,7 @@ local dap = require('dap')
 dap.adapters.node2 = {
   type = 'executable',
   command = 'node',
-  args = {os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js'},
+  args = { os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js' },
 }
 dap.configurations.javascript = {
   {
@@ -474,7 +526,7 @@ dap.configurations.javascript = {
     name = 'Attach to process',
     type = 'node2',
     request = 'attach',
-    processId = require'dap.utils'.pick_process,
+    processId = require 'dap.utils'.pick_process,
   },
 }
 
@@ -492,7 +544,7 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs( -4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
@@ -511,8 +563,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif luasnip.jumpable( -1) then
+        luasnip.jump( -1)
       else
         fallback()
       end
