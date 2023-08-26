@@ -17,7 +17,15 @@ search .mine
 wq!
 shell mkdir print
 rename Steam Halloween Scream Fest background [2560x1440] - pieced together from the site.png
-delete
 search servi
 search ser
+shell mkdir SpyXFamily
+shell mkdir stand-up
+cd 
+delete
+shell mkdir kaguyasama
+shell 
+qa
+q!
 q
+quit 
