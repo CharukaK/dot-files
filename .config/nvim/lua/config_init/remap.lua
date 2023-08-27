@@ -31,6 +31,13 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Remap keys for tpope git
+vim.keymap.set({ 'n', 'v' }, '<leader>gs', vim.cmd.Git)
+
+-- Remap keys to view Git history for the current file
+vim.keymap.set({ 'n', 'v' }, '<leader>gh', ":0Gllog")
+
+
 -- cursor will stay the same position when using J to remove the end line
 vim.keymap.set("n", "J", "mzJ`z")
 
