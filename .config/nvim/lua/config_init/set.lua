@@ -31,12 +31,6 @@ vim.wo.signcolumn = 'yes'
 -- Set colorscheme
 vim.o.termguicolors = true
 
--- vim.cmd.colorscheme('gruvbox')
-vim.cmd [[colorscheme tokyonight]]
--- vim.cmd [[colorscheme onedark]]
-
-
--- Set colorscheme
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4

@@ -80,8 +80,15 @@ require('packer').startup(function(use)
     -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+    -- ==== Debugging ====
     -- debug adapter protocol
     use 'mfussenegger/nvim-dap'
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
+    -- debug adapter for go
+    use 'leoluz/nvim-dap-go'
+
+    -- == end Debugging ==
 
     -- undo tree
     use 'mbbill/undotree'
