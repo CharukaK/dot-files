@@ -57,17 +57,18 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
     -- clangd = {},
-    -- gopls = {},
+    gopls = {},
     -- pyright = {},
-    -- rust_analyzer = {},
-    -- tsserver = {},
+    rust_analyzer = {},
+    tsserver = {},
+    html = { filetypes = { 'html', 'twig', 'hbs'} },
 
-    -- sumneko_lua = {
-    --   Lua = {
-    --     workspace = { checkThirdParty = false },
-    --     telemetry = { enable = false },
-    --   },
-    -- },
+    lua_ls = {
+        Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+        },
+    },
 }
 
 -- Setup neovim lua configuration

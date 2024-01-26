@@ -54,3 +54,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+-- [[ tab navigation ]]
+vim.keymap.set("n", "<leader>ts", ":tab split<CR>")
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
+vim.keymap.set("n", "<leader>tn", ":tabnext<CR>")
+vim.keymap.set("n", "<leader>tp", ":tabprevious<CR>")
+
+-- [[ buffer resize ]]
+vim.keymap.set("n", "<leader>w<", "30<C-w><")
+vim.keymap.set("n", "<leader>w>", "30<C-w>>")
+vim.keymap.set("n", "<leader>w+", "10<C-w>+")
+vim.keymap.set("n", "<leader>w-", "10<C-w>-")
+vim.keymap.set("n", "<leader>w_", "<C-w>_")
+vim.keymap.set("n", "<leader>w=", "<C-w>=")
+vim.keymap.set("n", "<leader>w|", "<C-w>|")
+vim.keymap.set("n", "<leader>wo", "<C-w>|<C-w>_")
+

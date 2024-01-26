@@ -10,7 +10,6 @@ open_with vlc
 shell pinta %s
 shell touch test
 shell touch yo
-
 shell mpv The.Office.S04E15.Night.Out.WEB-DL.x264-\[MULVAcoded\].mkv
 shell unzip postgresql-20210222T174841Z-001.zip
 search .mine
@@ -21,11 +20,13 @@ search servi
 search ser
 shell mkdir SpyXFamily
 shell mkdir stand-up
-cd 
 delete
 shell mkdir kaguyasama
 shell 
 qa
 q!
-q
 quit 
+q
+cd 
+search nvim
+

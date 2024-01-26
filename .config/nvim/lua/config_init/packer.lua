@@ -33,7 +33,16 @@ require('packer').startup(function(use)
             'williamboman/mason-lspconfig.nvim',
 
             -- Useful status updates for LSP
-            'j-hui/fidget.nvim',
+            -- 'j-hui/fidget.nvim',
+            {
+                'j-hui/fidget.nvim',
+                tag = 'legacy',
+                config = function()
+                    require("fidget").setup {
+                        -- options
+                    }
+                end,
+            },
 
             -- Additional lua configuration, makes nvim stuff amazing
             'folke/neodev.nvim',
@@ -68,6 +77,7 @@ require('packer').startup(function(use)
     -- use { "ellisonleao/gruvbox.nvim" }
     use 'folke/tokyonight.nvim'
     -- use 'Mofiqul/vscode.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     use 'nvim-lualine/lualine.nvim'           -- Fancier statusline
     use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
@@ -92,6 +102,34 @@ require('packer').startup(function(use)
 
     -- undo tree
     use 'mbbill/undotree'
+
+    -- fix resize
+    use({
+        "kwkarlwang/bufresize.nvim",
+        config = function()
+            local opts = { noremap = true, silent = true }
+            require("bufresize").setup({
+                register = {
+                    keys = {
+                        { "n", "<leader>w<", "30<C-w><",     opts },
+                        { "n", "<leader>w>", "30<C-w>>",     opts },
+                        { "n", "<leader>w+", "10<C-w>+",     opts },
+                        { "n", "<leader>w-", "10<C-w>-",     opts },
+                        { "n", "<leader>w_", "<C-w>_",       opts },
+                        { "n", "<leader>w=", "<C-w>=",       opts },
+                        { "n", "<leader>w|", "<C-w>|",       opts },
+                        { "n", "<leader>wo", "<C-w>|<C-w>_", opts },
+                    },
+                    trigger_events = { "BufWinEnter", "WinEnter" },
+                },
+                resize = {
+                    keys = {},
+                    trigger_events = { "VimResized" },
+                    increment = 5,
+                },
+            })
+        end,
+    })
 
     -- use {
     --   "mfussenegger/nvim-dap",

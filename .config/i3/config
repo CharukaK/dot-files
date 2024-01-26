@@ -42,7 +42,7 @@ bindsym $mod+Print --release exec --no-startup-id ~/custom_scripts/i3scrot -u
 bindsym $mod+Shift+Print --release exec --no-startup-id ~/custom_scripts/i3scrot -s
 
 bindsym $mod+F2 exec google-chrome-stable
-bindsym $mod+F3 exec i3-sensible-terminal -t ranger -e 'ranger'
+bindsym $mod+F3 exec i3-sensible-terminal -e 'ranger'
 bindsym $mod+F4 exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # kill focused window

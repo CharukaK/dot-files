@@ -46,3 +46,9 @@ vim.opt.colorcolumn = "120"
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+
+vim.filetype.add({
+    extension = {
+        templ = "templ",
+    },
+})
