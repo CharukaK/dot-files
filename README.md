@@ -11,7 +11,7 @@
  - playerctl
  - picom
  - xautolock
- - alacritty
+ - kitty
  - tmux(tpm for plugin management)
  - nvim(packer for plugin management)
 
