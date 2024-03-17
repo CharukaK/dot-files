@@ -30,3 +30,12 @@ q
 cd 
 search nvim
 
+rename FiraMono.zip
+mk
+shell mkdir fira
+shell unzip %s
+search usr
+search .local
+search font
+search ninja
+shell tar -xzf zathura-0.5.4.tar.xz

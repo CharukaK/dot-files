@@ -63,6 +63,7 @@ vim.keymap.set("n", "<leader>tp", ":tabprevious<CR>")
 
 -- [[ buffer resize ]]
 vim.keymap.set("n", "<leader>w<", "30<C-w><")
+vim.keymap.set("n", "<leader>wf", ":vertical resize 126<CR>")
 vim.keymap.set("n", "<leader>w>", "30<C-w>>")
 vim.keymap.set("n", "<leader>w+", "10<C-w>+")
 vim.keymap.set("n", "<leader>w-", "10<C-w>-")

@@ -33,16 +33,16 @@ require('packer').startup(function(use)
             'williamboman/mason-lspconfig.nvim',
 
             -- Useful status updates for LSP
-            -- 'j-hui/fidget.nvim',
-            {
-                'j-hui/fidget.nvim',
-                tag = 'legacy',
-                config = function()
-                    require("fidget").setup {
-                        -- options
-                    }
-                end,
-            },
+            'j-hui/fidget.nvim',
+            -- {
+            --     'j-hui/fidget.nvim',
+            --     -- tag = 'legacy',
+            --     -- config = function()
+            --     --     require("fidget").setup {
+            --     --         -- options
+            --     --     }
+            --     -- end,
+            -- },
 
             -- Additional lua configuration, makes nvim stuff amazing
             'folke/neodev.nvim',
@@ -127,6 +127,18 @@ require('packer').startup(function(use)
                     trigger_events = { "VimResized" },
                     increment = 5,
                 },
+            })
+        end,
+    })
+
+    -- copilot chat
+    use({
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "canary",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("CopilotChat").setup({
+                debug = true,
             })
         end,
     })
