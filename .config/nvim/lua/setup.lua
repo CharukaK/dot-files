@@ -1,9 +1,13 @@
--- [[ Setting options ]]
--- See `:help vim.o`
+-- leader setup
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
--- Disable netrw for nvimtree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+vim.g.have_nerd_font = true
+vim.g.netrw_liststyle = 3
+
+-- number options
+vim.opt.number=true
+vim.opt.relativenumber=true
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -47,8 +51,3 @@ vim.opt.colorcolumn = "120"
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-vim.filetype.add({
-    extension = {
-        templ = "templ",
-    },
-})

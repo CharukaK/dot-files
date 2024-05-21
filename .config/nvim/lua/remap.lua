@@ -1,10 +1,3 @@
--- [[ Basic Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -35,7 +28,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set({ 'n', 'v' }, '<leader>gs', vim.cmd.Git)
 
 -- Remap keys to view Git history for the current file
-vim.keymap.set({ 'n', 'v' }, '<leader>gh', ":0Gllog")
+vim.keymap.set({ 'n', 'v' }, '<leader>gh', ":0Gllog<CR>")
 
 
 -- cursor will stay the same position when using J to remove the end line
@@ -64,11 +57,8 @@ vim.keymap.set("n", "<leader>tp", ":tabprevious<CR>")
 -- [[ buffer resize ]]
 vim.keymap.set("n", "<leader>w<", "30<C-w><")
 vim.keymap.set("n", "<leader>wf", ":vertical resize 126<CR>")
-vim.keymap.set("n", "<leader>w>", "30<C-w>>")
-vim.keymap.set("n", "<leader>w+", "10<C-w>+")
-vim.keymap.set("n", "<leader>w-", "10<C-w>-")
-vim.keymap.set("n", "<leader>w_", "<C-w>_")
-vim.keymap.set("n", "<leader>w=", "<C-w>=")
-vim.keymap.set("n", "<leader>w|", "<C-w>|")
-vim.keymap.set("n", "<leader>wo", "<C-w>|<C-w>_")
-
+vim.keymap.set("n", "<M-H>", "<c-w>5>")
+vim.keymap.set("n", "<M-L>", "<c-w>5<")
+vim.keymap.set("n", "<M-J>", "<c-w>5+")
+vim.keymap.set("n", "<M-K>", "<c-w>5-")
+vim.keymap.set("n", "<leader>w_", "<C-w>_") -- buffer take full height
