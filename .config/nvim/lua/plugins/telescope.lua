@@ -2,8 +2,40 @@ return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.6',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+        defaults = {
+            mappings = {
+                i = {
+                    ['<C-u>'] = false,
+                    ['<C-d>'] = false,
+                },
+            },
+        },
+        pickers = {
+            find_files = {
+                hidden = true,
+                file_ignore_patterns = { '.git/' },
+            }
+        }
+    },
     config = function()
         -- telescope setup
+        require('telescope').setup {
+            defaults = {
+                mappings = {
+                    i = {
+                        ['<C-u>'] = false,
+                        ['<C-d>'] = false,
+                    },
+                },
+            },
+            pickers = {
+                find_files = {
+                    hidden = true,
+                    file_ignore_patterns = { '.git/' },
+                }
+            }
+        }
         local builtin = require('telescope.builtin')
         -- -- Enable telescope fzf native, if installed
         -- pcall(require('telescope').load_extension, 'fzf')
