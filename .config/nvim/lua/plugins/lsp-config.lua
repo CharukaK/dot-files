@@ -169,7 +169,6 @@ return {
                     { desc = 'Format current buffer with LSP' }
                 )
             end
-
             local mason_lspconfig = require 'mason-lspconfig'
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
@@ -180,13 +179,13 @@ return {
                 rust_analyzer = {},
                 tsserver = {},
                 html = { filetypes = { 'html', 'twig', 'hbs' } },
-
-                lua_ls = {
-                    Lua = {
-                        workspace = { checkThirdParty = false },
-                        telemetry = { enable = false },
-                    },
-                },
+                luarocks = {}
+                -- lua_ls = {
+                --     Lua = {
+                --         workspace = { checkThirdParty = false },
+                --         telemetry = { enable = false },
+                --     },
+                -- },
             }
             mason_lspconfig.setup({
                 ensure_installed = servers
@@ -198,7 +197,6 @@ return {
                         on_attach = on_attach,
                         capabilities = capabilities,
                         settings = servers[server_name]
-
                     }
                 end
             }
