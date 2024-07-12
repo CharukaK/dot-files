@@ -5,7 +5,7 @@ return {
         -- treesitter setup
         local tsconfig = require("nvim-treesitter.configs")
         tsconfig.setup({
-            ensure_installed = { 'c', 'cpp', 'go', 'python', 'rust', 'typescript', 'javascript', 'lua' },
+            ensure_installed = { 'c', 'cpp', 'go', 'python', 'rust', 'typescript', 'javascript', 'lua', 'java' },
             sync_install = true,
             ignore_install = {},
             auto_install = true,

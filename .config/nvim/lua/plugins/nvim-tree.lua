@@ -13,7 +13,10 @@ return {
                         width = 100
                     }
                 }
-            }
+            },
+            renderer = {
+                group_empty = true,
+            },
         })
 
         -- Remap keys for nvimtree
