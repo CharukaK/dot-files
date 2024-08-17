@@ -9,7 +9,7 @@ sort_sensitive = false
 sort_reverse   = true
 sort_dir_first = true
 linemode       = "none"
-show_hidden    = true
+show_hidden    = false
 show_symlink   = true
 scrolloff      = 5
 
