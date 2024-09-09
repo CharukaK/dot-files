@@ -1,7 +1,10 @@
 return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.6',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+    },
     opts = {
         defaults = {
             mappings = {
@@ -14,28 +17,19 @@ return {
         pickers = {
             find_files = {
                 hidden = true,
-                file_ignore_patterns = { '.git/' },
-            }
-        }
-    },
-    config = function()
-        -- telescope setup
-        require('telescope').setup {
-            defaults = {
-                mappings = {
-                    i = {
-                        ['<C-u>'] = false,
-                        ['<C-d>'] = false,
-                    },
-                },
+                file_ignore_patterns = { '.git/', 'node_modules/' },
             },
-            pickers = {
-                find_files = {
-                    hidden = true,
-                    file_ignore_patterns = { '.git/', 'node_modules' },
-                }
+            live_grep = {
+                hidden = true,
+                file_ignore_patterns = { '.git/', 'node_modules/' },
             }
-        }
+
+        },
+    },
+    config = function(_, opts)
+        -- telescope setup
+        require('telescope').setup(opts)
+        require('telescope').load_extension('fzf')
         local builtin = require('telescope.builtin')
         -- -- Enable telescope fzf native, if installed
         -- pcall(require('telescope').load_extension, 'fzf')

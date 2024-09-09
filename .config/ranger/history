@@ -5,7 +5,6 @@ default_linemode none
 shell h
 tag_remove 
 shell unzip scripts.zip
-open_with 
 open_with vlc
 shell pinta %s
 shell touch test
@@ -39,3 +38,6 @@ search .local
 search font
 search ninja
 shell tar -xzf zathura-0.5.4.tar.xz
+open_with 
+rename lazy-setup.lua
+search american
