@@ -57,5 +57,13 @@ return {
                 http = "http"
             },
         })
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "json",
+            callback = function(ev)
+                vim.bo.formatexpr = ""
+                vim.bo.formatprg = "jq"
+            end,
+        })
     end
 }
