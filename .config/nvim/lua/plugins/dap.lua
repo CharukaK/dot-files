@@ -9,7 +9,15 @@ return {
                 }
 
             },
-            "leoluz/nvim-dap-go"
+            "leoluz/nvim-dap-go",
+            -- {
+            --     "mxsdev/nvim-dap-vscode-js",
+            --     dependencies = {
+            --         {
+            --             "microsoft/vscode-js-debug",
+            --         }
+            --     },
+            -- }
         },
         config = function()
             local dap = require("dap")
@@ -17,9 +25,12 @@ return {
 
 
             vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
-            vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
-            vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DapBreakpointRejected', linehl = '', numhl = '' })
-            vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
+            vim.fn.sign_define('DapBreakpointCondition',
+                { text = '', texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
+            vim.fn.sign_define('DapBreakpointRejected',
+                { text = '', texthl = 'DapBreakpointRejected', linehl = '', numhl = '' })
+            vim.fn.sign_define('DapStopped',
+                { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
             dapui.setup()
 
             -- Set keymaps to control the debugger

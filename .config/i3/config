@@ -161,6 +161,9 @@ bindsym $mod+F8 exec sh .screenlayout/$(ls .screenlayout | dmenu -p 'Select Conf
 # Randomly Change background
 bindsym $mod+Shift+w exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
+# warpd hotkeys
+bindsym Mod4+Shift+f exec warpd --hint
+bindsym Mod4+Shift+t exec warpd --normal
 
 # switch to workspace
 bindsym $mod+1 workspace 1
