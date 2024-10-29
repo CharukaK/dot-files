@@ -6,6 +6,14 @@ return {
             options = {
                 component_seperators = "|",
                 section_seperators = "|"
+            },
+            sections = {
+                lualine_c = {
+                    {
+                        'filename',
+                        path=1
+                    }
+                }
             }
         })
     end
