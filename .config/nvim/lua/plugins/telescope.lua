@@ -3,7 +3,7 @@ return {
     tag = '0.1.6',
     dependencies = {
         'nvim-lua/plenary.nvim',
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     opts = {
         defaults = {
@@ -28,8 +28,9 @@ return {
     },
     config = function(_, opts)
         -- telescope setup
-        require('telescope').setup(opts)
-        require('telescope').load_extension('fzf')
+        local telescope = require 'telescope'
+        telescope.setup(opts)
+        telescope.load_extension('fzf')
         local builtin = require('telescope.builtin')
         -- -- Enable telescope fzf native, if installed
         -- pcall(require('telescope').load_extension, 'fzf')
