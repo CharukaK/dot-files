@@ -164,7 +164,13 @@ return {
             },
 
             -- experimental signature help support
-            -- signature = { enabled = true }
+            signature = { enabled = true },
+
+            completion = {
+                documentation = {
+                    auto_show = true
+                }
+            }
         },
         -- allows extending the providers array elsewhere in your config
         -- without having to redefine it
