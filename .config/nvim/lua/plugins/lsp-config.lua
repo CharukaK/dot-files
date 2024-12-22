@@ -144,7 +144,10 @@ return {
             -- see the "default configuration" section below for full documentation on how to define
             -- your own keymap.
             keymap = { preset = 'default' },
-
+            enabled = function()
+                return not vim.tbl_contains({ "AvanteInput", "Avante" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt" and
+                vim.b.completion ~= false
+            end,
             appearance = {
                 -- Sets the fallback highlight groups to nvim-cmp's highlight groups
                 -- Useful for when your theme doesn't support blink.cmp
