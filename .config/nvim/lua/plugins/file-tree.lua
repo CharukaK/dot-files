@@ -30,6 +30,25 @@ return {
     config = function()
         local minifile = require 'mini.files'
         minifile.setup()
-        vim.keymap.set({ 'n', 'v' }, '<leader>-', minifile.open)
+        local open_current_file_dir = function()
+            MiniFiles.open(MiniFiles.get_latest_path())
+        end
+
+        vim.api.nvim_create_autocmd('User', {
+            pattern = 'MiniFilesBufferCreate',
+            callback = function()
+                if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) then
+                    local arg0 = vim.fn.argv(0)
+
+                    if type(arg0) == "table" then
+                        arg0 = arg0[1]
+                    end
+
+                    vim.fn.chdir(arg0)
+                end
+            end
+        })
+
+        vim.keymap.set({ 'n', 'v' }, '<leader>-', open_current_file_dir)
     end
 }
