@@ -42,6 +42,8 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.wrap = false
+-- set sign column to stop editor jumping around
+vim.o.signcolumn = "yes:1"
 
 -- set number rules
 vim.opt.relativenumber = true
