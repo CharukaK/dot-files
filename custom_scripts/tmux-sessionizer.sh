@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/local-repos ~/local-repos/wso2 ~/local-repos/wso2-enterprise ~/test-projects -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/repos ~/repos/work ~/test-projects -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
