@@ -181,7 +181,9 @@ return {
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
                 -- optionally disable cmdline completions
-                cmdline = {},
+            },
+            cmdline = {
+                enabled = false
             },
 
             -- experimental signature help support
@@ -246,22 +248,15 @@ return {
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
             local servers = {
-                -- clangd = {},
-                gopls = {},
-                -- pyright = {},
-                rust_analyzer = {},
-                ts_ls = {},
-                html = { filetypes = { 'html', 'twig', 'hbs' } },
-                luarocks = {}
-                -- lua_ls = {
-                --     Lua = {
-                --         workspace = { checkThirdParty = false },
-                --         telemetry = { enable = false },
-                --     },
-                -- },
+                "gopls",
+                "rust_analyzer",
+                "ts_ls",
+                "html",
+                "lua_ls"
             }
             mason_lspconfig.setup({
-                ensure_installed = servers
+                ensure_installed = servers,
+                automatic_installation = true
             })
 
             mason_lspconfig.setup_handlers {
