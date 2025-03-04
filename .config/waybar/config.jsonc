@@ -2,7 +2,8 @@
     "spacing": 0,
 
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "hyprland/submap"
         // "sway/mode",
         // "sway/scratchpad",
         // "sway/window"

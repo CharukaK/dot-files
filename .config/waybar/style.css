@@ -121,6 +121,12 @@ window#waybar.hidden {
     background-color: #b54f4f;
 }
 
+#submap {
+    padding: 5px 8px;
+    color: #ffffff;
+    background-color: #f40000;
+}
+
 label:focus {
     background-color: #000000;
 }

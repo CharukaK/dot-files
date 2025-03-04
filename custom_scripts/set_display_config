@@ -1,0 +1,29 @@
+#!/bin/bash
+
+configs=("Dual Monitor" "Single Monitor")
+
+result=$(printf "%s\n" "${configs[@]}" | fuzzel -d -p 'Select Display Configuration:')
+
+if test -z "$result"
+then
+    echo "nothing selected"
+else  
+    case "$result" in
+        "Dual Monitor")
+            # Add the command to configure dual monitor setup
+            # echo "Configuring Dual Monitor setup..."
+            # hyprctl dispatch setdualmonitorconfig
+            hyprctl keyword monitor DP-2,preferred,-2560x0,auto
+            ;;
+        "Single Monitor")
+            # Add the command to configure single monitor setup
+            # echo "Configuring Single Monitor setup..."
+            # hyprctl dispatch setsinglemonitorconfig
+            hyprctl keyword monitor DP-2,disable
+            ;;
+        *)
+            echo "Unknown configuration selected"
+            ;;
+    esac
+fi
+

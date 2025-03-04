@@ -19,7 +19,6 @@ search servi
 search ser
 shell mkdir SpyXFamily
 shell mkdir stand-up
-delete
 shell mkdir kaguyasama
 shell 
 qa
@@ -38,6 +37,13 @@ search .local
 search font
 search ninja
 shell tar -xzf zathura-0.5.4.tar.xz
-open_with 
 rename lazy-setup.lua
 search american
+search downlo
+shell unzip fuzzel-main.zip
+theme
+rename theme
+wqa
+delete
+open_with hjjjkh:q
+open_with 
