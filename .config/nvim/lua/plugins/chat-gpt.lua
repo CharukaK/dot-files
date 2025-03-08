@@ -9,9 +9,9 @@ return {
         auto_suggestions_provider = "copilot",
         hints = { enabled = false },
         mappings = {
-            ask = "<leader>ccq",         -- ask
-            edit = "<leader>cce",        -- edit
-            refresh = "<leader>ccr",     -- refresh
+            ask = "<leader>ccq",     -- ask
+            edit = "<leader>cce",    -- edit
+            refresh = "<leader>ccr", -- refresh
         }
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -24,7 +24,7 @@ return {
         "MunifTanjim/nui.nvim",
         --- The below dependencies are optional,
         "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        "github/copilot.vim",      -- for providers='copilot'
+        "github/copilot.vim",          -- for providers='copilot'
         {
             -- support for image pasting
             "HakonHarnes/img-clip.nvim",

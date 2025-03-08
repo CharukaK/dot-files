@@ -17,11 +17,11 @@ return {
         pickers = {
             find_files = {
                 hidden = true,
-                file_ignore_patterns = { '.git/', 'node_modules/' },
+                file_ignore_patterns = { '.git/', 'node_modules/', ".yarn/" },
             },
             live_grep = {
                 hidden = true,
-                file_ignore_patterns = { '.git/', 'node_modules/' },
+                file_ignore_patterns = { '.git/', 'node_modules/', ".yarn/" },
             }
 
         },
