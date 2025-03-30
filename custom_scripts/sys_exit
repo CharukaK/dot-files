@@ -1,0 +1,5 @@
+#!/bin/bash
+
+options="lock\nlogout\nsuspend\nhibernate\n"
+
+result=$(hyprctl monitors | grep Monitor | awk '{print $2}' | fuzzel -d -p 'Move workspace to display:')
