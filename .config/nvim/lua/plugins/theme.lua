@@ -1,3 +1,11 @@
+-- return {
+--     "shaunsingh/nord.nvim",
+--     config = function()
+--         --Lua:
+--         -- require "nord".setup()
+--         vim.cmd [[colorscheme nord]]
+--     end
+-- }
 return {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -5,9 +13,10 @@ return {
     config = function()
         -- theme setup
         require("catppuccin").setup({
-            flavor = "mocha",
+            -- flavor = "mocha",
+            flavor = "frappe",
         })
-        vim.cmd.colorscheme "catppuccin"
+        vim.cmd.colorscheme "catppuccin-frappe"
     end
 }
 -- return {
