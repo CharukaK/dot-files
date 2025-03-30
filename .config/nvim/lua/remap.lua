@@ -54,6 +54,10 @@ vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
 vim.keymap.set("n", "<leader>tn", ":tabnext<CR>")
 vim.keymap.set("n", "<leader>tp", ":tabprevious<CR>")
 
+-- [[]]
+vim.keymap.set('n', '<leader>cp', ':let @+ = expand("%:p")<CR>', { silent = true })
+vim.keymap.set('n', '<leader>cr', ':let @+ = expand("%")<CR>', { silent = true })
+
 -- [[ buffer resize ]]
 vim.keymap.set("n", "<leader>w<", "30<C-w><")
 vim.keymap.set("n", "<leader>wf", ":vertical resize 126<CR>")

@@ -25,6 +25,9 @@ return {
             }
 
         },
+        extensions = {
+            fzf = {}
+        }
     },
     config = function(_, opts)
         -- telescope setup
@@ -49,7 +52,9 @@ return {
         vim.keymap.set('n', '<leader>ss', builtin.git_files, { desc = '[S]earch [F]iles' })
         vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
         vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-        vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+        -- replaced by multigrep
+        -- vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+        require "configs.telescope.multigrep".setup()
         vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 
         vim.filetype.add({
