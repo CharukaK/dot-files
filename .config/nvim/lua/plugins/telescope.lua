@@ -66,7 +66,7 @@ return {
 
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "json",
-            callback = function(ev)
+            callback = function()
                 vim.bo.formatexpr = ""
                 vim.bo.formatprg = "jq"
             end,

@@ -62,3 +62,9 @@ vim.keymap.set("n", "<M-L>", "<c-w>5<")
 vim.keymap.set("n", "<M-J>", "<c-w>5+")
 vim.keymap.set("n", "<M-K>", "<c-w>5-")
 vim.keymap.set("n", "<leader>w_", "<C-w>_") -- buffer take full height
+
+
+vim.keymap.set("n", "<leader>fc", function()
+    vim.o.cursorline = not vim.o.cursorline
+    vim.o.cursorcolumn = not vim.o.cursorcolumn
+end, { desc = "Toggle presentation mode" })

@@ -9,9 +9,13 @@ return {
         auto_suggestions_provider = "copilot",
         hints = { enabled = false },
         mappings = {
-            ask = "<leader>ccq",         -- ask
-            edit = "<leader>cce",        -- edit
-            refresh = "<leader>ccr",     -- refresh
+            ask = "<leader>ccq",     -- ask
+            edit = "<leader>cce",    -- edit
+            refresh = "<leader>ccr", -- refresh
+        },
+        file_selector = {
+            provider = "fzf",
+            provider_opts = {}
         }
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -24,7 +28,7 @@ return {
         "MunifTanjim/nui.nvim",
         --- The below dependencies are optional,
         "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        "github/copilot.vim",      -- for providers='copilot'
+        "github/copilot.vim",          -- for providers='copilot'
         {
             -- support for image pasting
             "HakonHarnes/img-clip.nvim",
@@ -50,6 +54,14 @@ return {
             },
             ft = { "markdown", "Avante" },
         },
+        {
+            "ibhagwan/fzf-lua",
+            -- optional for icon support
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+            -- or if using mini.icons/mini.nvim
+            -- dependencies = { "echasnovski/mini.icons" },
+            opts = {}
+        }
     },
 }
 -- return {
