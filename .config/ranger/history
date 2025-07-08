@@ -44,6 +44,6 @@ shell unzip fuzzel-main.zip
 theme
 rename theme
 wqa
-delete
 open_with hjjjkh:q
 open_with 
+delete
