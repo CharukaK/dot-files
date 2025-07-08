@@ -13,6 +13,10 @@ return {
             edit = "<leader>cce",    -- edit
             refresh = "<leader>ccr", -- refresh
         },
+        file_selector = {
+            provider = "fzf",
+            provider_opts = {}
+        }
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
@@ -54,5 +58,13 @@ return {
             },
             ft = { "markdown", "Avante" },
         },
+        {
+            "ibhagwan/fzf-lua",
+            -- optional for icon support
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+            -- or if using mini.icons/mini.nvim
+            -- dependencies = { "echasnovski/mini.icons" },
+            opts = {}
+        }
     },
 }
