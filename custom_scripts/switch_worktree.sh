@@ -31,6 +31,4 @@ if [ -z "$selected_worktree" ]; then
     exit 1
 fi
 
-cd "$selected_worktree" 
-
-
+cd "$selected_worktree"
