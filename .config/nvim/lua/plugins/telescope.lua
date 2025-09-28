@@ -7,6 +7,7 @@ return {
     },
     opts = {
         defaults = {
+            layout_strategy = 'vertical',
             mappings = {
                 i = {
                     ['<C-u>'] = false,
@@ -17,17 +18,16 @@ return {
         pickers = {
             find_files = {
                 hidden = true,
-                file_ignore_patterns = { '.git/', 'node_modules/' },
+                file_ignore_patterns = { '.git/', 'node_modules/', ".yarn/" },
             },
             live_grep = {
                 hidden = true,
-                file_ignore_patterns = { '.git/', 'node_modules/' },
+                file_ignore_patterns = { '.git/', 'node_modules/', ".yarn/" },
             }
-
         },
         extensions = {
             fzf = {}
-        }
+        },
     },
     config = function(_, opts)
         -- telescope setup
@@ -39,7 +39,11 @@ return {
         -- pcall(require('telescope').load_extension, 'fzf')
         -- See `:help telescope.builtin`
         vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
-        vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+        vim.keymap.set('n', '<leader><space>', function()
+            builtin.buffers({
+                sort_mru = true
+            })
+        end, { desc = '[ ] Find existing buffers' })
         vim.keymap.set('n', '<leader>/', function()
             -- You can pass additional configuration to telescope to change theme, layout, etc.
             builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -66,7 +70,7 @@ return {
 
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "json",
-            callback = function()
+            callback = function(ev)
                 vim.bo.formatexpr = ""
                 vim.bo.formatprg = "jq"
             end,

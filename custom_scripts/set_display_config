@@ -13,7 +13,7 @@ else
             # Add the command to configure dual monitor setup
             # echo "Configuring Dual Monitor setup..."
             # hyprctl dispatch setdualmonitorconfig
-            hyprctl keyword monitor DP-2,preferred,-2560x0,auto
+            hyprctl keyword monitor DP-2,preferred,2560x0,auto
             ;;
         "Single Monitor")
             # Add the command to configure single monitor setup

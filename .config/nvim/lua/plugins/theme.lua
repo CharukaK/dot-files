@@ -1,11 +1,3 @@
--- return {
---     "shaunsingh/nord.nvim",
---     config = function()
---         --Lua:
---         -- require "nord".setup()
---         vim.cmd [[colorscheme nord]]
---     end
--- }
 return {
     "catppuccin/nvim",
     name = "catppuccin",

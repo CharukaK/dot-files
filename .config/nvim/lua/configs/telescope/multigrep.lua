@@ -40,7 +40,7 @@ local live_multigrep = function(opts)
 
     pickers.new(opts, {
         debounce = 100,
-        prompt_title = "Live Grep",
+        prompt_title = "Live Grep multigrep",
         finder = finder,
         previewer = conf.grep_previewer(opts),
         sorter = require "telescope.sorters".empty()

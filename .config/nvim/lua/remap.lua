@@ -54,6 +54,10 @@ vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
 vim.keymap.set("n", "<leader>tn", ":tabnext<CR>")
 vim.keymap.set("n", "<leader>tp", ":tabprevious<CR>")
 
+-- [[]]
+vim.keymap.set('n', '<leader>cp', ':let @+ = expand("%:p")<CR>', { silent = true })
+vim.keymap.set('n', '<leader>cr', ':let @+ = expand("%")<CR>', { silent = true })
+
 -- [[ buffer resize ]]
 vim.keymap.set("n", "<leader>w<", "30<C-w><")
 vim.keymap.set("n", "<leader>wf", ":vertical resize 126<CR>")
@@ -63,8 +67,15 @@ vim.keymap.set("n", "<M-J>", "<c-w>5+")
 vim.keymap.set("n", "<M-K>", "<c-w>5-")
 vim.keymap.set("n", "<leader>w_", "<C-w>_") -- buffer take full height
 
-
 vim.keymap.set("n", "<leader>fc", function()
     vim.o.cursorline = not vim.o.cursorline
     vim.o.cursorcolumn = not vim.o.cursorcolumn
 end, { desc = "Toggle presentation mode" })
+
+vim.keymap.set("n", "<leader>cn", ":cn<CR>zz")
+vim.keymap.set("n", "<leader>cp", ":cp<CR>zz")
+
+vim.keymap.set("n", "<leader>py", ':let @+ = expand("%")<CR>')
+vim.keymap.set("n", "<leader>Py", ':let @+ = expand("%:p")<CR>')
+
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
