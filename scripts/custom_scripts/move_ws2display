@@ -1,0 +1,11 @@
+#!/bin/bash
+
+result=$(hyprctl monitors | grep Monitor | awk '{print $2}' | fuzzel -d -p 'Move workspace to display:')
+
+if test -z "$result"
+then
+	echo "nothing selected"
+else
+	hyprctl dispatch movecurrentworkspacetomonitor $result
+fi
+

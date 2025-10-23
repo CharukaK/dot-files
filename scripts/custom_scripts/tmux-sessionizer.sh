@@ -3,7 +3,13 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/local-repos ~/local-repos/wso2 ~/local-repos/wso2-enterprise ~/test-projects -mindepth 1 -maxdepth 1 -type d | fzf)
+    # Check if running inside tmux
+    if [ -n "$TMUX" ]; then
+        FZF_OPTS="--tmux"
+    else
+        FZF_OPTS=""
+    fi
+    selected=$(find ~/repos ~/test-projects -mindepth 1 -maxdepth 1 -type d | fzf $FZF_OPTS)
 fi
 
 if [[ -z $selected ]]; then
