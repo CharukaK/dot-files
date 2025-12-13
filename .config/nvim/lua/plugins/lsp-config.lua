@@ -29,8 +29,9 @@ return {
 			{ "j-hui/fidget.nvim", opts = {} },
 
 			-- java go brrrrr
-			"mfussenegger/nvim-jdtls",
-            "MunifTanjim/nui.nvim"
+			-- "mfussenegger/nvim-jdtls",
+			-- "MunifTanjim/nui.nvim",
+			"nvim-java/nvim-java",
 		},
 		config = function()
 			-- local lspconfig = require("lspconfig")
@@ -103,16 +104,18 @@ return {
 						end,
 					})
 
-					vim.api.nvim_create_autocmd("FileType", {
-						pattern = "java",
-						callback = function(args)
-							require("configs.jdtls.jdtls_setup").setup()
-						end,
-					})
-
 					map("<leader>th", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 					end, "[T]oggle Inlay [H]ints")
+				end,
+			})
+
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "java",
+				callback = function(args)
+					-- require("configs.jdtls.jdtls_setup").setup()
+					require("java").setup()
+					vim.lsp.enable("jdtls")
 				end,
 			})
 
@@ -390,11 +393,11 @@ return {
 			-- C-k: Toggle signature help (if signature.enabled = true)
 			--
 			-- See :h blink-cmp-config-keymap for defining your own keymap
-			keymap = { 
-                preset = "default",
-                ['<Tab>'] = { 'snippet_forward', 'select_next', 'fallback' },
-                ['<S-Tab>'] = { 'snippet_backward', 'select_prev', 'fallback' },
-            },
+			keymap = {
+				preset = "default",
+				["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+				["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+			},
 
 			appearance = {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'

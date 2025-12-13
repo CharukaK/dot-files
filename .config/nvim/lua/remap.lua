@@ -19,6 +19,8 @@ vim.keymap.set("n", "<A-l>", "<C-w>l");
 -- set halfpage scroll but everytime cursor is in middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "<S-n>", "<S-n>zz")
 
 -- when in visual mode use this to move code highlighted code blocks
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
