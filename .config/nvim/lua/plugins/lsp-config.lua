@@ -114,7 +114,11 @@ return {
 				pattern = "java",
 				callback = function(args)
 					-- require("configs.jdtls.jdtls_setup").setup()
-					require("java").setup()
+					require("java").setup({
+                        spring_boot_tools = {
+                            enable = true
+                        }
+                    })
 					vim.lsp.enable("jdtls")
 				end,
 			})
