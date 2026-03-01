@@ -45,6 +45,7 @@ window#waybar.hidden {
 #backlight,
 #network,
 #pulseaudio,
+#bluetooth,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -102,7 +103,7 @@ window#waybar.hidden {
 
 #workspaces button,
 #mode {
-    padding: 2px 2px;
+    padding: 2px 5px;
     background-color: transparent;
     color: #ffffff;
 }

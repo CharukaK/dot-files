@@ -12,11 +12,12 @@
         "memory",
         // "backlight",
         // "pulseaudio",
-        // "battery",
+        "bluetooth",
         "network",
         "clock",
         // "custom/power",
         // "idle_inhibitor",
+        "battery",
         "tray"
     ],
 
@@ -47,25 +48,35 @@
         "format-icons": ["🔅", "🔆"]
     },
 
-    // "battery": {
-    //     "states": {
-    //         "warning": 30,
-    //         "critical": 15
-    //     },
-    //     "interval": 1,
-    //     "format": "{icon} {capacity}%",
-    //     "format-charging": "⚡ {capacity}%",
-    //     "format-icons": ["", "", "", "", ""]
-    // },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "interval": 1,
+        "format": "{icon}   {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
 
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": " {status}",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": " {num_connections} connected",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "kitty bluetui"
+    },
     "network": {
         "format-wifi": "Wi-Fi: ({signalStrength}%) {essid} {ipaddr}",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "kitty impala"
     },
-
     // "pulseaudio": {
     //     "format": "{icon} {volume}%",
     //     "format-bluetooth": "{icon} {volume}%",

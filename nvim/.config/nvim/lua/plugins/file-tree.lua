@@ -37,7 +37,7 @@ return {
     --     lazy = false,
     --     config = function()
     --         require("oil").setup()
-    --         vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    --         vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
     --     end
     -- }
     {
@@ -48,7 +48,7 @@ return {
             minifile.setup({
                 mappings = {
                     go_in       = '<CR>', -- return 
-                    go_in_plus  = '<S-l>', -- shift return
+                    go_in_plus  = '<CR>', -- shift return
                     go_out      = '-',
                 },
             })

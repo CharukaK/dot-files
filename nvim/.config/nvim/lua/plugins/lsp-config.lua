@@ -10,10 +10,8 @@ return {
 		},
 	},
 	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
+		"mason-org/mason.nvim",
+		opts = {},
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -30,7 +28,7 @@ return {
 
 			-- java go brrrrr
 			"mfussenegger/nvim-jdtls",
-            "MunifTanjim/nui.nvim"
+			"MunifTanjim/nui.nvim",
 		},
 		config = function()
 			-- local lspconfig = require("lspconfig")
@@ -390,11 +388,11 @@ return {
 			-- C-k: Toggle signature help (if signature.enabled = true)
 			--
 			-- See :h blink-cmp-config-keymap for defining your own keymap
-			keymap = { 
-                preset = "default",
-                ['<Tab>'] = { 'snippet_forward', 'select_next', 'fallback' },
-                ['<S-Tab>'] = { 'snippet_backward', 'select_prev', 'fallback' },
-            },
+			keymap = {
+				preset = "default",
+				["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+				["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+			},
 
 			appearance = {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
