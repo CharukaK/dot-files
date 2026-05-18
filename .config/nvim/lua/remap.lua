@@ -81,3 +81,5 @@ vim.keymap.set("n", "<leader>py", ':let @+ = expand("%")<CR>')
 vim.keymap.set("n", "<leader>Py", ':let @+ = expand("%:p")<CR>')
 
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+
+require('configs.utils.utils').setup()
