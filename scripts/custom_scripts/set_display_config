@@ -13,21 +13,21 @@ else
             # Add the command to configure dual monitor setup
             # echo "Configuring Dual Monitor setup..."
             # hyprctl dispatch setdualmonitorconfig
-            hyprctl keyword monitor HDMI-A-1,preferred,auto,1
-            hyprctl keyword monitor eDP-1,preferred,auto,1.6
+            hyprctl keyword monitor DP-2,preferred,0x0,1
+            hyprctl keyword monitor eDP-1,preferred,0x1440,1.6
             ;;
         "Single Monitor Prime")
             # Add the command to configure single monitor setup
             # echo "Configuring Single Monitor setup..."
             # hyprctl dispatch setsinglemonitorconfig
-            hyprctl keyword monitor HDMI-A-1,disable
+            hyprctl keyword monitor DP-2,disable
             hyprctl keyword monitor eDP-1,preferred,auto,1.6
             ;;
         "Single Monitor Ext")
             # Add the command to configure single monitor setup
             # echo "Configuring Single Monitor setup..."
             # hyprctl dispatch setsinglemonitorconfig
-            hyprctl keyword monitor HDMI-A-1,preferred,auto,1
+            hyprctl keyword monitor DP-2,preferred,auto,1
             hyprctl keyword monitor eDP-1,disable
             ;;
         *)

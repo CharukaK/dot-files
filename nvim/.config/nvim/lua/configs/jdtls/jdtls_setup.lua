@@ -2,14 +2,14 @@ local M = {}
 
 function M:setup()
     local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-    local workspace_dir = "/Users/charukak/dev/jdtls_data" .. project_name
+    local workspace_dir = "/home/charuka/dev/jdtls_data" .. project_name
     local config = {
         -- The command that starts the language server
         -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
         cmd = {
 
             -- 💀
-            "/usr/bin/java", -- or '/path/to/java17_or_newer/bin/java'
+            "java", -- or '/path/to/java18_or_newer/bin/java'
             -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
             "-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -26,14 +26,14 @@ function M:setup()
 
             -- 💀
             "-jar",
-            "/Users/charukak/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar",
+            "/home/charuka/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar",
             -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
             -- Must point to the                                                     Change this to
             -- eclipse.jdt.ls installation                                           the actual version
 
             -- 💀
             "-configuration",
-            "/Users/charukak/.local/share/nvim/mason/packages/jdtls/config_linux",
+            "/home/charuka/.local/share/nvim/mason/packages/jdtls/config_linux",
             -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
             -- Must point to the                      Change to one of `linux`, `win` or `mac`
             -- eclipse.jdt.ls installation            Depending on your system.

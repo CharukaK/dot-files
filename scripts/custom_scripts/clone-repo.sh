@@ -5,7 +5,7 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
-selected=$(echo "/home/charuka/repos" | fzf --header "select root dir:" --reverse)
+selected=$(echo -e "/home/charuka/repos\n/home/charukak/test-projects" | fzf --header "select root dir:" --reverse)
 
 if [[ -z $selected ]]; then 
     exit 0
