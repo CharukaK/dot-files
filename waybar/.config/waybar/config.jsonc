@@ -1,0 +1,105 @@
+{
+    "spacing": 0,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap"
+        // "sway/mode",
+        // "sway/scratchpad",
+        // "sway/window"
+    ],
+    "modules-right": [
+        "cpu",
+        "memory",
+        // "backlight",
+        // "pulseaudio",
+        "bluetooth",
+        "network",
+        "clock",
+        // "custom/power",
+        // "idle_inhibitor",
+        "battery",
+        "tray"
+    ],
+
+    "custom/power": {
+        "format": "goecho",
+        "tooltip-format": "power manager",
+        "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown' 'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit' -b 'Hibernate' 'systemctl hibernate' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
+    },
+
+    "clock": {
+        "interval": 30,
+        "format": "{:%a, %d %b %Y | %I:%M %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "CPU: {usage}%",
+    },
+
+    "memory": {
+        "interval": 1,
+        "format": "Mem: {used:0.1f}G"
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["🔅", "🔆"]
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "interval": 1,
+        "format": "{icon}   {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": " {status}",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": " {num_connections} connected",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "kitty bluetui"
+    },
+    "network": {
+        "format-wifi": "Wi-Fi: ({signalStrength}%) {essid} {ipaddr}",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "kitty impala"
+    },
+    // "pulseaudio": {
+    //     "format": "{icon} {volume}%",
+    //     "format-bluetooth": "{icon} {volume}%",
+    //     "format-muted": " {format_source}",
+    //     "format-source": " {volume}%",
+    //     "format-source-muted": "",
+    //     "format-icons": {
+    //         "headphone": "",
+    //         "hands-free": "",
+    //         "default": ["", "", ""]
+    //     },
+    //     "on-click": "pavucontrol"
+    // },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "tray": {
+        "spacing": 10
+    }
+}
