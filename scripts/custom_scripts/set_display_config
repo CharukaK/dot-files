@@ -27,7 +27,7 @@ else
             # Add the command to configure single monitor setup
             # echo "Configuring Single Monitor setup..."
             # hyprctl dispatch setsinglemonitorconfig
-            hyprctl keyword monitor DP-2,preferred,auto,1
+            hyprctl keyword monitor DP-2,preferred,auto,1.07
             hyprctl keyword monitor eDP-1,disable
             ;;
         *)
