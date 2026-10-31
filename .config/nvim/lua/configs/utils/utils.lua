@@ -36,7 +36,7 @@ M.setup = function()
 	-- Create the Keybindings
 	vim.keymap.set(
 		{ "n", "v" },
-		"<leader>cp",
+		"<leader>hp",
 		M.copy_path_with_line_cols,
 		{ desc = "Copy relative path with line/col" }
 	)

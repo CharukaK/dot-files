@@ -1,3 +1,5 @@
+-- return {
+-- }
 return {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -9,7 +11,7 @@ return {
             flavor = "frappe",
         })
         vim.cmd.colorscheme "catppuccin-frappe"
-    end
+    end,
 }
 -- return {
 --     "folke/tokyonight.nvim",

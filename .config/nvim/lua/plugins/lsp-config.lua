@@ -402,6 +402,7 @@ return {
 			-- See :h blink-cmp-config-keymap for defining your own keymap
 			keymap = {
 				preset = "default",
+				["<C-k>"] = {}, -- disable blink.cmp <C-k> binding so RexNavigateUp works
 				["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
 				["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
 			},

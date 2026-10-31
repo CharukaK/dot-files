@@ -9,40 +9,67 @@ local live_multigrep = function(opts)
     opts = opts or {}
     opts.cwd = opts.cwd or vim.uv.cwd()
 
+    -- Inherit hidden + file_ignore_patterns from the live_grep picker config
+    -- so multigrep behaves consistently with the stock live_grep defaults.
+    local live_grep_defaults = (require("telescope.config").pickers or {})["live_grep"] or {}
+    opts = vim.tbl_deep_extend("keep", opts, live_grep_defaults)
+
     local finder = finders.new_async_job {
         command_generator = function(prompt)
-            if not prompt or prompt == "" then
+            local pieces = vim.split(prompt or "", "  ")
+            local search_pattern = vim.trim(pieces[1] or "")
+            local glob_input     = vim.trim(pieces[2] or "")
+
+            if search_pattern == "" then
                 return nil
             end
 
-            local pieces = vim.split(prompt, "  ")
             local args = { "rg" }
 
-            if pieces[1] then
-                table.insert(args, "-e")
-                table.insert(args, pieces[1])
+            if opts.hidden then
+                table.insert(args, "--hidden")
             end
 
-            if pieces[2] then
-                local glob_pattern = vim.trim(pieces[2])
-                if glob_pattern ~= "" then
-                    table.insert(args, "-g")
-                    table.insert(args, glob_pattern)
+            table.insert(args, "-e")
+            table.insert(args, search_pattern)
+
+            if glob_input ~= "" then
+                for _, glob in ipairs(vim.split(glob_input, ",")) do
+                    local g = vim.trim(glob)
+                    if g ~= "" then
+                        table.insert(args, "-g")
+                        table.insert(args, g)
+                    end
                 end
             end
 
-            return vim.list_extend(args, { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" })
+            if opts.additional_args then
+                if type(opts.additional_args) == "function" then
+                    vim.list_extend(args, opts.additional_args(opts))
+                elseif type(opts.additional_args) == "table" then
+                    vim.list_extend(args, opts.additional_args)
+                end
+            end
+
+            return vim.list_extend(args, {
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+            })
         end,
         entry_maker = make_entry.gen_from_vimgrep(opts),
-        cwd = opts.cwd
+        cwd = opts.cwd,
     }
 
     pickers.new(opts, {
         debounce = 100,
-        prompt_title = "Live Grep multigrep",
+        prompt_title = "Multi Grep  <pattern>  [glob]",
         finder = finder,
         previewer = conf.grep_previewer(opts),
-        sorter = require "telescope.sorters".empty()
+        sorter = require "telescope.sorters".empty(),
     }):find()
 end
 
