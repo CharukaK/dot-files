@@ -1,0 +1,7 @@
+[Unit]
+Description=Herdr schedule: Say hello
+
+[Service]
+Type=oneshot
+ExecStart="/home/charuka/.config/herdr-app/data/schedules/mw5700so-9g42ht/run.sh"
+TimeoutStopSec=10

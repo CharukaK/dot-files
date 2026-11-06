@@ -1,0 +1,3 @@
+{
+  "schedules.v1": "[{\"id\":\"mw5700so-9g42ht\",\"name\":\"Say hello\",\"folder\":\"/home/charuka/yo/hee\",\"task\":\"You say hello and create a dated txt file\",\"time\":\"09:00\",\"cadence\":\"minutes\",\"intervalMinutes\":5,\"agentKey\":\"pi\",\"agentName\":\"Pi\",\"argv\":[\"pi\"],\"model\":\"\",\"enabled\":false,\"shell\":\"/usr/bin/zsh\"}]"
+}

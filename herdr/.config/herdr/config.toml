@@ -1,0 +1,16 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+a"
+split_vertical = "prefix+%"
+split_horizontal = 'prefix+"'
+open_notification_target = ""
+open_worktree = "prefix+shift+o"
+
+[[keys.command]]
+key = "prefix+o"
+type = "popup"
+command = "~/.config/herdr/bin/open-repository"
+description = "open repository"
+width = "80%"
+height = "80%"

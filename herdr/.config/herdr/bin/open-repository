@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+roots=("$HOME/repos" "$HOME/test-projects")
+
+ensure_main_worktree() {
+  local repo=$1 branch existing target bare top
+  bare=$(git -C "$repo" rev-parse --is-bare-repository 2>/dev/null || true)
+  if [[ $bare != true ]]; then
+    top=$(git -C "$repo" rev-parse --show-toplevel 2>/dev/null || true)
+    printf '%s\n' "${top:-$repo}"
+    return
+  fi
+
+  branch=$(git --git-dir="$repo" symbolic-ref --short HEAD 2>/dev/null || printf main)
+  existing=$(git --git-dir="$repo" worktree list --porcelain | awk -v ref="refs/heads/$branch" '
+    /^worktree / { path = substr($0, 10) }
+    $1 == "branch" && $2 == ref { print path; exit }
+  ')
+  if [[ -n $existing ]]; then
+    printf '%s\n' "$existing"
+    return
+  fi
+
+  target="$repo/$branch"
+  if [[ -e $target ]]; then
+    printf 'Cannot add worktree: %s already exists but is not the %s checkout.\n' "$target" "$branch" >&2
+    return 1
+  fi
+  if git --git-dir="$repo" show-ref --verify --quiet "refs/heads/$branch"; then
+    git --git-dir="$repo" worktree add "$target" "$branch" >&2
+  else
+    git --git-dir="$repo" worktree add --orphan -b "$branch" "$target" >&2
+  fi
+  printf '%s\n' "$target"
+}
+
+if [[ ${1-} == --ensure-main ]]; then
+  ensure_main_worktree "$2"
+  exit
+fi
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+
+declare -A seen=()
+while IFS= read -r -d '' candidate; do
+  if common=$(git -C "$candidate" rev-parse --path-format=absolute --git-common-dir 2>/dev/null); then
+    if [[ $(basename "$common") == .git ]]; then
+      repo=$(dirname "$common")
+    else
+      repo=$common
+    fi
+  elif [[ -d $candidate ]]; then
+    repo=$candidate
+  else
+    continue
+  fi
+  [[ ${seen[$repo]+set} ]] && continue
+  seen[$repo]=1
+  printf '%s\t%s\n' "${repo#"$HOME"/}" "$repo" >> "$tmp"
+done < <(
+  for root in "${roots[@]}"; do
+    [[ -d $root ]] || continue
+    find "$root" -mindepth 1 -maxdepth 1 -type d -print0
+  done
+)
+
+sort -u -o "$tmp" "$tmp"
+
+if [[ ${1-} == --list ]]; then
+  cut -f2- "$tmp"
+  exit
+fi
+
+selection=$(fzf --delimiter=$'\t' --with-nth=1 --prompt='Repository> ' < "$tmp") || exit
+repo=${selection#*$'\t'}
+herdr_bin=${HERDR_BIN_PATH:-$(command -v herdr)}
+workspace=$("$herdr_bin" workspace create --cwd "$repo" --label "$(basename "$repo")" --focus)
+worktree=$(ensure_main_worktree "$repo")
+if [[ $worktree != "$repo" ]]; then
+  workspace_id=$(jq -r '.result.workspace.workspace_id' <<< "$workspace")
+  "$herdr_bin" worktree open --workspace "$workspace_id" --path "$worktree" --focus >/dev/null
+fi

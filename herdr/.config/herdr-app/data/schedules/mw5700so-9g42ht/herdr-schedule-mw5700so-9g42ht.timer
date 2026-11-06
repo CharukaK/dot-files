@@ -1,0 +1,11 @@
+[Unit]
+Description=Herdr schedule: Say hello
+
+[Timer]
+OnActiveSec=5min
+OnUnitActiveSec=5min
+AccuracySec=1min
+Unit=herdr-schedule-mw5700so-9g42ht.service
+
+[Install]
+WantedBy=timers.target
